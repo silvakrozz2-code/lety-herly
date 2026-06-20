@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #ffb6c1;
+  --primary-light: #ffe4e1;
+  --primary-dark: #ff8da1;
+  --bg: #ffffff;
+  --bg-alt: #fff5f8;
+  --shadow: 0 20px 40px rgba(255,182,193,0.15);
+  --radius: 24px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); overflow-x: hidden; }
+
+.glass-nav { background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+.glass-card { background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.3); }
+
+/* LOADER */
+.loader { width: 40px; height: 40px; border: 3px solid var(--primary-light); border-top-color: var(--primary-dark); border-radius: 50%; animation: spin 1s infinite linear; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* CARROSSEL 3D */
+.carousel-3d-wrap { perspective: 1000px; }
+.carousel-3d { transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); }
+.carousel-slide { position: absolute; width: 230px; height: 290px; left: 50%; top: 50%; margin-left: -115px; margin-top: -145px; border-radius: 18px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.5); border: 2px solid rgba(255,182,193,0.3); }
+
+/* NOTIFY */
+.notify-badge { position: fixed; top: 75px; right: 20px; background: var(--primary-dark); color: #fff; padding: 12px 18px; border-radius: 14px; font-size: 0.85rem; font-weight: 600; z-index: 9999; animation: slideIn 0.3s ease; box-shadow: 0 8px 24px rgba(255,141,161,0.4); line-height: 1.5; white-space: pre-line; }
+@keyframes slideIn { from { transform: translateX(110%); } to { transform: translateX(0); } }
+
+/* MAP GLASS */
+.map-glass { background: linear-gradient(135deg, rgba(255,182,193,0.15) 0%, rgba(255,228,225,0.2) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(255,182,193,0.4); box-shadow: 0 30px 80px rgba(255,141,161,0.2), inset 0 1px 0 rgba(255,255,255,0.6); }
+
+/* HORARIO BTN */
+.horario-btn { background: var(--bg-alt); border: 2px solid var(--primary-light); color: var(--primary-dark); padding: 14px 5px; border-radius: 14px; font-weight: 800; cursor: pointer; transition: 0.2s; font-size: 0.85rem; width: 100%; }
+.horario-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.horario-btn.ocupado { background: #f5f5f5; border-color: #ddd; color: #bbb; cursor: not-allowed; text-decoration: line-through; }
+
+/* ADMIN TABS */
+.admin-tab { padding: 10px 22px; border-radius: 100px; border: 2px solid var(--primary-light); background: none; color: var(--primary-dark); font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 0.82rem; }
+.admin-tab.active { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+
+/* MELQUIDEV BADGE */
+.melquidev-badge { background: linear-gradient(90deg, #1a0a0e, #3d1220); color: rgba(255,182,193,0.7); font-size: 0.72rem; padding: 8px 16px; border-radius: 100px; border: 1px solid rgba(255,182,193,0.2); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; transition: 0.3s; }
+.melquidev-badge:hover { color: var(--primary); border-color: var(--primary); }
+
+@media (max-width: 768px) {
+  .carousel-slide { width: 190px; height: 250px; margin-left: -95px; margin-top: -125px; }
+  
+  /* Mobile geral */
+  .container { padding: 0 16px; }
+
+  /* Hero mobile */
+  .hero-content h1 { font-size: 2.4rem !important; }
+  .hero-content p { font-size: 0.92rem !important; }
+
+  /* Cards mobile */
+  .services-grid { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
+  .service-img-wrapper { height: 160px !important; }
+  .service-body { padding: 14px !important; }
+  .service-body h3 { font-size: 0.85rem !important; }
+  .price-tag { font-size: 1.1rem !important; }
+
+  /* Manutenção mobile */
+  .maintenance-grid { grid-template-columns: 1fr !important; max-width: 100% !important; }
+
+  /* Nav mobile */
+  .nav-links-desktop { display: none !important; }
+
+  /* Modal mobile */
+  .modal-content { padding: 24px 16px !important; }
+  .horarios { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; }
+  .horario-btn { padding: 12px 4px !important; font-size: 0.78rem !important; }
+
+  /* Mapa mobile */
+  .map-wrapper { height: 260px !important; }
+
+  /* Admin mobile */
+  .admin-tabs { gap: 6px !important; }
+  .admin-tab { padding: 8px 14px !important; font-size: 0.75rem !important; }
+  .appointment-item { flex-direction: column !important; align-items: flex-start !important; }
+}
